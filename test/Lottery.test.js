@@ -20,4 +20,11 @@ beforeEach(async () => {
       .send({ from: accounts[0], gas: '1000000'});
 
 });
+//Test
+describe('Lottery Contract', () => {
+    it('deploys a contract', () => { //sucessfully deployed to the local network?
+        assert.ok(lottery.options.address);
+    });
+
+});
 //get a list of all accounts
