@@ -26,5 +26,21 @@ describe('Lottery Contract', () => {
         assert.ok(lottery.options.address);
     });
 
+    it('allows one account to enter', async () => {
+        await lottery.methods.enter().send({
+            //who is attempting to enter the lottery
+            from: accounts[0], 
+            //send along some Wei
+            value: web3.utils.toWei('0.02', 'ether')
+        });
+
+        //gets a list of players
+        const players = await lottery.methods.getPlayers().call({
+            from: accounts[0]
+        });
+        //checks that there is only one record in the array ant that the correct adress is stored inside
+        assert.equal(accounts[0], players[0]);
+        assert.equal(1, players.length); //value it should be(1) and te value it is(players.lenght)
+    });
 });
 //get a list of all accounts
