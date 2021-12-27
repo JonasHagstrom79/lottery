@@ -23,7 +23,9 @@ const deploy = async () => {
     .deploy({ data: bytecode })
     //sends the transaction to the network
     .send({ gas: '1000000', from: accounts[0] });
-    //shows the adress that our contract was deployed to
+  //shows the contract interface(ABI)
+  console.log(interface);
+  //shows the adress that our contract was deployed to
   console.log('Contract deployed to', result.options.address);
   //Preventing a hanging deployment
   provider.engine.stop();
